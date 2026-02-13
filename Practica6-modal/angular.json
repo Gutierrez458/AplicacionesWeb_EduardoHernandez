@@ -2,11 +2,12 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "b02c7e18-a717-4a47-9c89-1ffdb2981a10"
   },
   "newProjectRoot": "projects",
   "projects": {
-    "nombre": {
+    "Practica6-modal": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -24,14 +25,15 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+           "styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+],
+"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+
+
           },
           "configurations": {
             "production": {
@@ -61,10 +63,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "nombre:build:production"
+              "buildTarget": "Practica6-modal:build:production"
             },
             "development": {
-              "buildTarget": "nombre:build:development"
+              "buildTarget": "Practica6-modal:build:development"
             }
           },
           "defaultConfiguration": "development"
