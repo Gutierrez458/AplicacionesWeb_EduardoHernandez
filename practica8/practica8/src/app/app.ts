@@ -5,6 +5,6 @@ import { Eventos } from './tabla/tabla';
   selector: 'app-root',
   standalone: true,
   imports: [Eventos],
-  templateUrl: './app.html'
+  template: `<app-eventos></app-eventos>`
 })
 export class App {}

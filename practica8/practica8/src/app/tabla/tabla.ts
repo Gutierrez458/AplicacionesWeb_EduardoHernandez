@@ -16,7 +16,7 @@ constructor(private eventosService: EventosService) {}
 
 ngOnInit() {
     this.eventosService.obtenerEventos()
-    .subscribe((data: any) => {
+    .subscribe(data => {
         this.listaEventos = data;
     });
 }
