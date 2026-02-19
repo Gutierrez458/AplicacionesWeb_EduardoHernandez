@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class EventosService {
 
-  private API = 'http://127.0.0.1:5000/eventos';
+export class Eventos {
+  private API = 'http://localhost:5000/eventos';
 
   constructor(private http: HttpClient) {}
 
   obtenerEventos() {
-    return this.http.get(this.API);
+    return this.http.get<any[]>(this.API);
   }
+  
 }
