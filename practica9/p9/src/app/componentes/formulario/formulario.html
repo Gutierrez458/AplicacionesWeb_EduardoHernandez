@@ -1,0 +1,37 @@
+<div class="container mt-4">
+
+<h2>Agregar alumno</h2>
+
+<div class="mb-3">
+    <input 
+    type="text"
+    class="form-control"
+    placeholder="Nombre"
+    [(ngModel)]="alumno.nombre">
+</div>
+
+<div class="mb-3">
+    <input 
+    type="number"
+    class="form-control"
+    placeholder="Edad"
+    [(ngModel)]="alumno.edad">
+</div>
+
+<div class="mb-3">
+    <input 
+    type="text"
+    class="form-control"
+    placeholder="Carrera"
+    [(ngModel)]="alumno.carrera">
+</div>
+
+<button 
+    class="btn btn-primary"
+    (click)="guardar()">
+    Guardar
+</button>
+
+</div>
+
+<hr>
