@@ -14,11 +14,11 @@ listaEventos: any[] = [];
 
 constructor(private eventosService: EventosService) {}
 
-ngOnInit() {
+ngOnInit(): void {
     this.eventosService.obtenerEventos()
-    .subscribe(data => {
+    .subscribe((data: any[]) => {
         this.listaEventos = data;
+        console.log(data);   // ← esto nos ayuda a verificar
     });
 }
-
 }

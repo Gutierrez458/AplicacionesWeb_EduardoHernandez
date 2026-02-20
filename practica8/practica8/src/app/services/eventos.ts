@@ -6,12 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EventosService {
 
-  private API = 'http://127.0.0.1:5000/eventos';
+  private API = 'http://127.0.0.1:5001/eventos';
 
   constructor(private http: HttpClient) {}
 
   obtenerEventos() {
     return this.http.get<any[]>(this.API);
   }
-
 }

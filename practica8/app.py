@@ -16,6 +16,6 @@ def obtener_eventos():
     eventos = list(coleccion.find({}, {"_id": 0}))
     return jsonify(eventos)
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port = 5001)
 
 
