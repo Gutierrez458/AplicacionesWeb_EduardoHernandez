@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="section-title"> Tienda de Videojuegos</h2>
+  
+  <form (ngSubmit)="guardar()" #form="ngForm" class="mb-4">
+  <input type="text" name="nombre" [(ngModel)]="nuevo.nombre" placeholder="Nombre" required class="form-control mb-2">
+  <input type="text" name="genero" [(ngModel)]="nuevo.genero" placeholder="Género" required class="form-control mb-2">
+  <input type="number" name="precio" [(ngModel)]="nuevo.precio" placeholder="Precio" required class="form-control mb-2">
+  <input type="text" name="imagenUrl" [(ngModel)]="nuevo.imagenUrl" placeholder="URL Imagen" required class="form-control mb-2">
+  <button class="btn btn-primary">Guardar</button>
+</form>
+
+<div class="card" *ngFor="let j of games">
+  <div class="card-image">
+    <img [src]="'http://localhost:5001/img/' + j.imagenUrl" [alt]="j.nombre">
+  </div>
+  <div class="card-body">
+    <h3 class="game-name">{{ j.nombre }}</h3>
+    <p><strong>Género:</strong> {{ j.genero }}</p>
+    <p><strong>Precio:</strong> ${{ j.precio }}</p>
+    <button class="btn btn-danger btn-sm" (click)="abrirModalEliminar(j)">Eliminar</button>
+  </div>
+</div>
+
+<!-- Modal para eliminar -->
+<div class="modal-overlay" *ngIf="mostrarModalEliminar" (click)="cerrarModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Confirmar eliminación</h2>
+      <button class="close-btn" (click)="cerrarModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p *ngIf="juegoAEliminar">¿Estás seguro de que deseas eliminar <strong>{{ juegoAEliminar.nombre }}</strong>?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
+      <button class="btn btn-danger" (click)="confirmarEliminar()">Eliminar</button>
+    </div>
+  </div>
+</div>

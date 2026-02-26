@@ -1,0 +1,13 @@
+.site-footer{
+  padding: 16px 0;
+  border-top: 1px solid #eee;
+  margin-top: 28px;
+}
+.footer-inner{
+  display:flex;
+  justify-content:center;
+  color:#666;
+  font-size:13px;
+}
+.site-footer a { color: #333; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
