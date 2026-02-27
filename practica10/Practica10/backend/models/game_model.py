@@ -1,65 +1,42 @@
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
-# Conexión a MongoDB
+# Configuración de MongoDB
 MONGO_URI = 'mongodb://localhost:27017/'
 DB_NAME = 'videojuegos_db'
 COLLECTION_NAME = 'games'
 
-def get_client():
-    """Obtiene cliente de MongoDB"""
-    return MongoClient(MONGO_URI)
-
 def get_games_collection():
-    """Obtiene la colección de juegos"""
-    client = get_client()
+    client = MongoClient(MONGO_URI)
     db = client[DB_NAME]
     return db[COLLECTION_NAME]
 
 def get_all_games():
-    """Obtiene todos los juegos de la base de datos"""
     try:
         collection = get_games_collection()
         games = list(collection.find())
-
-        # Convertir ObjectId a string para JSON
         for game in games:
-            game['_id'] = str(game.get('_id', ''))
-
+            game['_id'] = str(game['_id'])  # Convertir ID a string para Angular
         return games
     except Exception as e:
-        print(f"Error obteniendo juegos: {e}")
+        print(f"Error al obtener juegos: {e}")
         return []
 
 def create_game(game_data):
-    """Crea un nuevo juego en la base de datos"""
     try:
         collection = get_games_collection()
-
-        nombre = game_data.get('nombre')
-        genero = game_data.get('genero')
-        precio = game_data.get('precio')
-        imagenUrl = game_data.get('imagenUrl')
-
-        result = collection.insert_one({
-            'nombre': nombre,
-            'genero': genero,
-            'precio': precio,
-            'imagenUrl': imagenUrl
-        })
-
+        # Insertamos el objeto tal cual viene de Angular
+        result = collection.insert_one(game_data)
         return str(result.inserted_id)
     except Exception as e:
-        print(f"Error creando juego: {e}")
+        print(f"Error al crear juego: {e}")
         return None
 
 def delete_game(game_id):
-    """Elimina un juego de la base de datos"""
     try:
         collection = get_games_collection()
         result = collection.delete_one({'_id': ObjectId(game_id)})
         return result.deleted_count > 0
     except Exception as e:
-        print(f"Error eliminando juego: {e}")
+        print(f"Error al eliminar juego: {e}")
         return False
-

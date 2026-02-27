@@ -1,154 +1,57 @@
+/* Fondo general claro y limpio */
+.main-content-wrapper {
+    background-color: #f8f9fa; /* Gris casi blanco */
+    min-height: 100vh;
+    padding: 40px 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: #212529; /* Texto casi negro para máxima legibilidad */
+}
+
+/* Título principal elegante */
 .section-title {
-  margin: 18px 0;
-  font-size: 20px;
-  display:flex;
-  align-items:center;
-  gap:8px;
+    color: #0d6efd; /* Azul profesional */
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #0d6efd;
+    display: inline-block;
+    padding-bottom: 10px;
 }
 
-.cards{
-  display:flex;
-  gap: 28px;
-  flex-wrap: wrap;
-  align-items:flex-start;
+/* Tarjetas (Cards) estilo Apple/Limpio */
+.card {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card{
-  width: 220px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-  overflow: visible;
-  padding: 12px;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-.card-image{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding: 6px;
-  background: #fafafa;
-  border-radius: 4px;
-  box-shadow: inset 0 0 0 rgba(0,0,0,0.02);
-  margin-bottom: 10px;
-}
-.card-image img{
-  width: 170px;
-  height: auto;
-  display:block;
-  border-radius:2px;
+.card-title {
+    color: #1a1a1a;
+    font-weight: 700;
 }
 
-.card-body { padding: 4px 2px; }
-.game-name { margin: 6px 0; font-size: 16px; }
-.card p { margin: 4px 0; color:#444; font-size: 13px; }
-
-.btn {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
-  transition: all 0.3s;
+/* Formulario claro */
+.form-container {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+    padding: 30px;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  color: white;
+.form-control {
+    border: 2px solid #e9ecef;
+    padding: 10px;
+    font-size: 1rem;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: #c82333;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-}
-
-.btn-sm {
-  padding: 6px 10px;
-  font-size: 12px;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 90%;
-  overflow: hidden;
-}
-
-.modal-header {
-  padding: 20px;
-  border-bottom: 1px solid #e0e0e0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.modal-header h2 {
-  margin: 0;
-  font-size: 18px;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #999;
-  padding: 0;
-}
-
-.close-btn:hover {
-  color: #333;
-}
-
-.modal-body {
-  padding: 20px;
-  color: #333;
-}
-
-.modal-footer {
-  padding: 20px;
-  border-top: 1px solid #e0e0e0;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.mb-4 {
-  margin-bottom: 16px;
-}
-
-.mb-2 {
-  margin-bottom: 8px;
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: none;
 }

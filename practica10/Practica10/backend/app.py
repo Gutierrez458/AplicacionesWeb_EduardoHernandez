@@ -7,37 +7,27 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PUBLIC_FOLDER = os.path.join(os.path.dirname(BASE_DIR), 'public')
 
 app = Flask(__name__, static_folder=PUBLIC_FOLDER, static_url_path='')
-
-CORS(app, resources={
-    r"/*": {
-        "origins": ["http://localhost:4200", "http://localhost:3000"],
-        "methods": ["GET", "POST", "DELETE", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
-    }
-})
+CORS(app) 
 
 @app.route('/games', methods=['GET'])
 def get_games():
-    games = get_all_games()
-    return jsonify(games), 200
+    return jsonify(get_all_games()), 200
 
 @app.route('/games', methods=['POST'])
 def add_game():
     data = request.json
     game_id = create_game(data)
-    
-    return jsonify({
-        "message": "Videojuego agregado",
-        "id": game_id
-    }), 201
+    if game_id:
+        return jsonify({"message": "Juego creado", "id": game_id}), 201
+    return jsonify({"message": "Error al crear"}), 400
 
 @app.route('/games/<game_id>', methods=['DELETE'])
 def remove_game(game_id):
-    success = delete_game(game_id)
-    if success:
-        return jsonify({"message": "Videojuego eliminado"}), 200
-    else:
-        return jsonify({"message": "Error al eliminar"}), 400
+    if delete_game(game_id):
+        return jsonify({"message": "Juego eliminado"}), 200
+    return jsonify({"message": "No se encontró el juego"}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
+
+    

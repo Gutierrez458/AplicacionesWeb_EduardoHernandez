@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from '../../services/game';
+import { Game } from '../../services/game'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,28 +11,48 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./home.css']
 })
 export class HomeComponent implements OnInit {
+  games: any[] = [];
+  nuevo: any = { nombre: '', genero: '', precio: 0, imagenUrl: '' };
+  mostrarModalEliminar = false;
+  juegoAEliminar: any = null;
+  
+  // Nueva variable para la notificación
+  mensajeExito: string = '';
 
-  games: any[] = [];   // ✅ arreglo para guardar juegos
-  nuevo: any = {};     // ✅ objeto para formulario
-  mostrarModalEliminar = false;  // ✅ controlar visibilidad del modal
-  juegoAEliminar: any = null;    // ✅ juego seleccionado para eliminar
-
-  constructor(private game: Game) {}
+  constructor(private gameService: Game) {}
 
   ngOnInit(): void {
     this.cargarGames();
   }
 
   cargarGames() {
-    this.game.getGames().subscribe(data => {
-      this.games = data;
+    this.gameService.getGames().subscribe({
+      next: (data) => { this.games = data; },
+      error: (e) => console.error("Error al cargar:", e)
     });
   }
 
   guardar() {
-    this.game.addGame(this.nuevo).subscribe(() => {
-      this.cargarGames();
-      this.nuevo = {};
+    // Guardamos el nombre temporalmente para el mensaje
+    const nombreJuego = this.nuevo.nombre;
+
+    this.gameService.addGame(this.nuevo).subscribe({
+      next: () => {
+        // Activamos el mensaje de éxito
+        this.mensajeExito = `¡Éxito! "${nombreJuego}" se ha añadido a la tienda.`;
+        
+        this.cargarGames();
+        this.nuevo = { nombre: '', genero: '', precio: 0, imagenUrl: '' };
+
+        // Desaparece después de 3 segundos
+        setTimeout(() => {
+          this.mensajeExito = '';
+        }, 3000);
+      },
+      error: (e) => {
+        console.error("Error al guardar:", e);
+        alert("Hubo un error al guardar el juego.");
+      }
     });
   }
 
@@ -48,9 +68,12 @@ export class HomeComponent implements OnInit {
 
   confirmarEliminar() {
     if (this.juegoAEliminar && this.juegoAEliminar._id) {
-      this.game.deleteGame(this.juegoAEliminar._id).subscribe(() => {
-        this.cargarGames();
-        this.cerrarModal();
+      this.gameService.deleteGame(this.juegoAEliminar._id).subscribe({
+        next: () => {
+          this.cargarGames();
+          this.cerrarModal();
+        },
+        error: (e) => console.error("Error al eliminar:", e)
       });
     }
   }
