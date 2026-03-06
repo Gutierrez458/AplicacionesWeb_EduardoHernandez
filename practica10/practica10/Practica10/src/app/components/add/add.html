@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Agregar juego</h2>
+  <form (ngSubmit)="guardar()" #form="ngForm" class="mb-4">
+    <input type="text" name="nombre" [(ngModel)]="nuevo.nombre" placeholder="Nombre" required class="form-control mb-2">
+    <input type="text" name="genero" [(ngModel)]="nuevo.genero" placeholder="Género" required class="form-control mb-2">
+    <input type="number" name="precio" [(ngModel)]="nuevo.precio" placeholder="Precio" required class="form-control mb-2">
+    <input type="text" name="imagenUrl" [(ngModel)]="nuevo.imagenUrl" placeholder="URL Imagen" required class="form-control mb-2">
+    <button class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-secondary" routerLink="/">Cancelar</button>
+  </form>
+</div>

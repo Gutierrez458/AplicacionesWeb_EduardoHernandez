@@ -1,0 +1,16 @@
+<div class="modal-overlay" (click)="cancelar()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Confirmar eliminación</h2>
+      <button class="close-btn" (click)="cancelar()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p *ngIf="game">¿Estás seguro de que deseas eliminar <strong>{{ game.nombre }}</strong>?</p>
+      <p *ngIf="!game">Cargando...</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+      <button class="btn btn-danger" (click)="confirmarEliminar()">Eliminar</button>
+    </div>
+  </div>
+</div>

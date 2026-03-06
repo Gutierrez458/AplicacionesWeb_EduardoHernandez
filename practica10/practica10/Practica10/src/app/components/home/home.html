@@ -1,0 +1,15 @@
+<div class="container">
+  <h2 class="section-title"> Tienda de Videojuegos</h2>
+  
+
+<div class="card" *ngFor="let j of games">
+  <div class="card-image">
+    <img [src]="'http://localhost:5000/img/' + j.imagenUrl" [alt]="j.nombre">
+  </div>
+  <div class="card-body">
+    <h3 class="game-name">{{ j.nombre }}</h3>
+    <p><strong>Género:</strong> {{ j.genero }}</p>
+    <p><strong>Precio:</strong> ${{ j.precio }}</p>
+    <button class="btn btn-danger btn-sm" (click)="irEliminar(j)">Eliminar</button>
+  </div>
+</div>
