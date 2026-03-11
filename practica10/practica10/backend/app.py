@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 cliente = MongoClient("mongodb://localhost:27017/")
-db = cliente["videojuegosDB"]
+db = cliente["videojuegos_db"]
 coleccion = db["games"]
 
 # OBTENER TODOS
