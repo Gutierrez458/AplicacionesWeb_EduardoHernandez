@@ -17,6 +17,7 @@ export class Formulario {
     genero: '',
     precio: 0,
     imagenUrl: ''
+    
   };
 
   constructor(

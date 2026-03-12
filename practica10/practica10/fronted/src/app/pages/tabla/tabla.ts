@@ -13,6 +13,7 @@ import { Games } from '../../services/alumnos';
 export class Tabla implements OnInit {
 
   listaGames: any[] = [];
+  juegoAEliminar: string = "";
 
   constructor(
     private games: Games,
@@ -28,7 +29,7 @@ export class Tabla implements OnInit {
     this.games.obtenerGames()
       .subscribe(data => {
         this.listaGames = data;
-        this.cdr.detectChanges(); // 👈 FORZAMOS ACTUALIZACIÓN
+        this.cdr.detectChanges();
       });
   }
 
@@ -43,4 +44,5 @@ export class Tabla implements OnInit {
   editarGame(game: any) {
     this.router.navigate(['/editar', game._id]);
   }
+
 }
