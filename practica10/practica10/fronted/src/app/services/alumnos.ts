@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Games {
 
-  private API = 'http://127.0.0.1:5000/games';
+private API = 'https://videojuegos-iyxo.onrender.com/games';
 
   constructor(private http: HttpClient) {}
 
