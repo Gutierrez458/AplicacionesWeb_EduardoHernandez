@@ -1,93 +1,45 @@
 <div class="container mt-4">
-
-  <!-- Header -->
-  <div class="p-3 mb-4 rounded" style="background: linear-gradient(90deg,#1e3c72,#2a5298); color:white;">
-    <div class="d-flex justify-content-between align-items-center">
-      <h2 class="m-0">Lista de Videojuegos</h2>
-      <a routerLink="/nuevo" class="btn btn-light fw-bold">
-        + Nuevo Videojuego
-      </a>
-    </div>
-  </div>
-
-  <!-- Lista de juegos -->
   <div class="row g-4">
     <div class="col-md-4 col-lg-3" *ngFor="let juego of listaGames">
       <div class="card h-100 shadow-sm">
-
-        <img [src]="juego.imagenUrl"
-             class="card-img-top p-2"
-             style="height:180px; object-fit:cover;">
-
+        <img [src]="juego.imagenUrl" class="card-img-top p-2" style="height:180px; object-fit:cover;">
         <div class="card-body text-center">
-
           <h5 class="card-title">{{ juego.nombre }}</h5>
-
-          <p class="text-muted mb-1">
-            {{ juego.genero }}
-          </p>
-
-          <p class="fw-bold">
-            ${{ juego.precio }}
-          </p>
-
           <div class="d-flex justify-content-center gap-2">
-
-            <button class="btn btn-warning btn-sm"
-                    (click)="editarGame(juego)">
-              Editar
-            </button>
-
-            <!-- Botón eliminar abre modal -->
-            <button class="btn btn-danger btn-sm"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modalEliminar"
+            <button class="btn btn-warning btn-sm" (click)="editarGame(juego)">Editar</button>
+            
+            <button class="btn btn-danger btn-sm" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modalEliminar" 
                     (click)="juegoAEliminar = juego._id">
               Eliminar
             </button>
-
           </div>
-
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
-
-<!-- Modal de confirmación -->
-<div class="modal fade" id="modalEliminar" tabindex="-1">
+<div class="modal fade" id="modalEliminar" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-
       <div class="modal-header">
         <h5 class="modal-title">Confirmar eliminación</h5>
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="modal">
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-
       <div class="modal-body">
         ¿Estás seguro de que deseas eliminar este videojuego?
       </div>
-
       <div class="modal-footer">
-
-        <button class="btn btn-secondary"
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" 
+                class="btn btn-danger" 
+                (click)="eliminarGame(juegoAEliminar)" 
                 data-bs-dismiss="modal">
-          Cancelar
-        </button>
-
-        <!-- BOTÓN CORREGIDO -->
-        <button class="btn btn-danger"
-                (click)="eliminarGame(juegoAEliminar)">
           Sí, eliminar
         </button>
-
       </div>
-
     </div>
   </div>
 </div>
