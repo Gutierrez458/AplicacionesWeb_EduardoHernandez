@@ -2,11 +2,16 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson import ObjectId
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-cliente = MongoClient("mongodb://localhost:27017/")
+# CONEXIÓN A MONGODB ATLAS
+uri = "mongodb+srv://hernandezeduardo:$HGeduardo06@cluster0.2hv2wpb.mongodb.net/videojuegos_db?retryWrites=true&w=majority"
+
+cliente = MongoClient(uri)
+
 db = cliente["videojuegos_db"]
 coleccion = db["games"]
 
@@ -42,7 +47,7 @@ def eliminar_game(id):
     coleccion.delete_one({"_id": ObjectId(id)})
     return jsonify({"mensaje": "Juego eliminado"})
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
