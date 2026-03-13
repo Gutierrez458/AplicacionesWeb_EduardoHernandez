@@ -1,19 +1,12 @@
 <div class="container mt-5">
-
-  <!-- Header -->
   <div class="p-3 mb-4 rounded text-white"
-       style="background: linear-gradient(90deg,#8e2de2,#4a00e0);">
+      style="background: linear-gradient(90deg,#8e2de2,#4a00e0);">
     <h2 class="m-0">Editar Videojuego</h2>
   </div>
-
-  <!-- Card -->
   <div class="card shadow-lg border-0">
     <div class="card-body p-4">
-
       <form (ngSubmit)="actualizarGame()">
-
         <div class="row">
-
           <div class="col-md-6 mb-3">
             <label class="form-label fw-bold">Nombre</label>
             <input type="text"
@@ -35,41 +28,33 @@
           <div class="col-md-6 mb-3">
             <label class="form-label fw-bold">Precio</label>
             <input type="number"
-                   class="form-control"
-                   [(ngModel)]="game.precio"
-                   name="precio"
-                   required>
+                  class="form-control"
+                  [(ngModel)]="game.precio"
+                  name="precio"
+                  required>
           </div>
 
           <div class="col-md-6 mb-3">
             <label class="form-label fw-bold">URL de Imagen</label>
             <input type="text"
-                   class="form-control"
-                   [(ngModel)]="game.imagenUrl"
-                   name="imagenUrl"
-                   required>
+                  class="form-control"
+                  [(ngModel)]="game.imagenUrl"
+                  name="imagenUrl"
+                  required>
           </div>
-
         </div>
 
- <!-- Botones -->
 <div class="mt-4 d-flex gap-2">
-
   <button type="submit" class="btn btn-primary px-4">
     Actualizar
   </button>
-
   <button type="button"
           class="btn btn-outline-secondary px-4"
           (click)="cancelar()">
     Cancelar
   </button>
-
 </div>
-
       </form>
-
     </div>
   </div>
-
 </div>

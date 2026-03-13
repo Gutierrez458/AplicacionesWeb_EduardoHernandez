@@ -17,7 +17,6 @@ export class Formulario {
     genero: '',
     precio: 0,
     imagenUrl: ''
-    
   };
 
   constructor(
@@ -32,4 +31,9 @@ export class Formulario {
         this.router.navigate(['/games']);
       });
   }
+
+  cancelar() {
+    this.router.navigate(['/games']);
+  }
+
 }
