@@ -3,17 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { Games } from '../../services/alumnos';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tabla',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './tabla.html'
 })
 export class Tabla implements OnInit {
-
   listaGames: any[] = [];
   juegoAEliminar: string = "";
+  busqueda: string = "";
 
   constructor(
     private games: Games,
@@ -52,6 +53,7 @@ export class Tabla implements OnInit {
   if (confirmar) {
     this.eliminarGame(id);
   }
+  
 
 }
 
