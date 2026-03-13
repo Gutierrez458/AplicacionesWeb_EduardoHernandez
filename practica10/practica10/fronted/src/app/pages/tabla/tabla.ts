@@ -45,4 +45,14 @@ export class Tabla implements OnInit {
     this.router.navigate(['/editar', game._id]);
   }
 
+  confirmarEliminar(id: string) {
+
+  const confirmar = confirm("¿Estás seguro de que deseas eliminar este videojuego?");
+
+  if (confirmar) {
+    this.eliminarGame(id);
+  }
+
+}
+
 }
