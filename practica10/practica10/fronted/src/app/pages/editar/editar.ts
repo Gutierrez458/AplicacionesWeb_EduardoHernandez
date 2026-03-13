@@ -13,6 +13,9 @@ import { Games } from '../../services/alumnos';
 export class Editar implements OnInit {
 
   id: string = '';
+  cancelar() {
+  this.router.navigate(['/games']);
+}
 
   game = {
     nombre: '',

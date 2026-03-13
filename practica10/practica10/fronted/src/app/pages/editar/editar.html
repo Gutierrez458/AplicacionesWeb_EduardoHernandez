@@ -17,19 +17,19 @@
           <div class="col-md-6 mb-3">
             <label class="form-label fw-bold">Nombre</label>
             <input type="text"
-                   class="form-control"
-                   [(ngModel)]="game.nombre"
-                   name="nombre"
-                   required>
+                  class="form-control"
+                  [(ngModel)]="game.nombre"
+                  name="nombre"
+                  required>
           </div>
 
           <div class="col-md-6 mb-3">
             <label class="form-label fw-bold">Género</label>
             <input type="text"
-                   class="form-control"
-                   [(ngModel)]="game.genero"
-                   name="genero"
-                   required>
+                  class="form-control"
+                  [(ngModel)]="game.genero"
+                  name="genero"
+                  required>
           </div>
 
           <div class="col-md-6 mb-3">
@@ -52,18 +52,20 @@
 
         </div>
 
-        <!-- Botones -->
-        <div class="mt-4 d-flex gap-2">
+ <!-- Botones -->
+<div class="mt-4 d-flex gap-2">
 
-          <button type="submit" class="btn btn-primary px-4">
-            Actualizar
-          </button>
+  <button type="submit" class="btn btn-primary px-4">
+    Actualizar
+  </button>
 
-          <a routerLink="/games" class="btn btn-outline-secondary px-4">
-            Cancelar
-          </a>
+  <button type="button"
+          class="btn btn-outline-secondary px-4"
+          (click)="cancelar()">
+    Cancelar
+  </button>
 
-        </div>
+</div>
 
       </form>
 
