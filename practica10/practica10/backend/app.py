@@ -7,7 +7,6 @@ import os
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, methods=["GET","POST","PUT","DELETE","OPTIONS"])
 
-# CONEXIÓN A MONGODB ATLAS
 uri = "mongodb+srv://hernandezeduardo:$HGeduardo06@cluster0.2hv2wpb.mongodb.net/videojuegos_db?retryWrites=true&w=majority"
 cliente = MongoClient(uri)
 db = cliente["videojuegos_db"]
@@ -43,4 +42,4 @@ def eliminar_game(id):
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)  

@@ -1,0 +1,46 @@
+<div class="card shadow mb-5">
+  <div class="card-body p-4">
+    <h2 class="text-center mb-4">Contáctanos</h2>
+    <p class="text-center text-muted mb-4">Envía un mensaje a los organizadores de eventos culturales</p>
+    
+    <form>
+      <div class="mb-3">
+        <label for="nombre" class="form-label fw-bold">Nombre</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label fw-bold">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+      </div>
+
+      <div class="mb-3">
+        <label for="mensaje" class="form-label fw-bold">Mensaje</label>
+        <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe tu duda o comentario"></textarea>
+      </div>
+
+      <div class="d-grid">
+        <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#confirmacionModal">
+          Enviar Mensaje
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <div class="modal-body">
+        <div class="text-success mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>
+        </div>
+        <h4 class="modal-title fw-bold mb-2" id="modalLabel">¡Mensaje enviado!</h4>
+        <p class="text-muted">Tu mensaje se envió correctamente. Pronto nos pondremos en contacto contigo.</p>
+        <button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
